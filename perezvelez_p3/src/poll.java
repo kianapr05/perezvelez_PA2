@@ -13,13 +13,21 @@ public class poll {
 		int[] prison = new int[10];
 		int a;
 		int b = 0;
-		int total = 0;
 		double eduAvg;
 		double heaAvg;
 		double envAvg;
 		double traAvg;
 		double priAvg;
-		double userNum = 0;
+		int eduTotal = 0;
+		int heaTotal = 0;
+		int envTotal = 0;
+		int traTotal = 0;
+		int priTotal = 0;
+		int userNum = 0;
+		int max;
+		int min;
+		String high;
+		String low;
 		
 		
 		while (user == 'y') {
@@ -55,50 +63,44 @@ public class poll {
 		}
 		
 		while (b < 10) {
-			total = total + (edu[b] * (b+1));
+			eduTotal = eduTotal + (edu[b] * (b+1));
 			b += 1;
 		}
 		
-		eduAvg = total / userNum;
+		eduAvg = eduTotal / userNum;
 		b = 0;
-		total = 0;
 		
 		while (b < 10) {
-			total = total + (health[b] * (b+1));
+			heaTotal = heaTotal + (health[b] * (b+1));
 			b += 1;
 		}
 		
-		heaAvg = total / userNum;
+		heaAvg = heaTotal / userNum;
 		b = 0;
-		total = 0;
 		
 		while (b < 10) {
-			total = total + (environment[b] * (b+1));
+			envTotal = envTotal + (environment[b] * (b+1));
 			b += 1;
 		}
 		
-		envAvg = total / userNum;
+		envAvg = envTotal / userNum;
 		b = 0;
-		total = 0;
 		
 		while (b < 10) {
-			total = total + (transportation[b] * (b+1));
+			traTotal = traTotal + (transportation[b] * (b+1));
 			b += 1;
 		}
 		
-		traAvg = total / userNum;
+		traAvg = traTotal / userNum;
 		b = 0;
-		total = 0;
 		
 		while (b < 10) {
-			total = total + (prison[b] * (b+1));
+			priTotal = priTotal + (prison[b] * (b+1));
 			b += 1;
 		}
 		
-		priAvg = total / userNum;
+		priAvg = priTotal / userNum;
 		b = 0;
-		total = 0;
-		
 		
 		
 		
@@ -123,6 +125,48 @@ public class poll {
 		System.out.println("");
 		System.out.println("________________________|____________________________________________________________|___________");
 		
+		
+		max = eduTotal;
+		high = "Education";
+		if (heaTotal > max) {
+			max = heaTotal;
+			high = "Health Care";
+		}
+		if (envTotal > max) {
+			max = envTotal;
+			high = "Environmental Issues";
+		}
+		if (traTotal > max) {
+			max = traTotal;
+			high = "Public Transportation";
+		}
+		if (priTotal > max) {
+			max = priTotal;
+			high = "Prison Reform";
+		}
+		
+		
+		min = eduTotal;
+		low = "Education";
+		if (heaTotal < min) {
+			min = heaTotal;
+			low = "Health Care";
+		}
+		if (envTotal < min) {
+			min = envTotal;
+			low = "Environmental Issues";
+		}
+		if (traTotal < min) {
+			min = traTotal;
+			low = "Public Transportation";
+		}
+		if (priTotal < min) {
+			min = priTotal;
+			low = "Prison Reform";
+		}
+		
+		System.out.println("The issue with the highest point total is " + high + " with " + max + " points.");
+		System.out.println("The issue with the lowest point total is " + low + " with " + min + " points.");
 	
 		
 	}
